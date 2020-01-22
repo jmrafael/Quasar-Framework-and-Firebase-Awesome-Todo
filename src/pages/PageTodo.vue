@@ -36,7 +36,7 @@ import { mapGetters } from 'vuex'
 export default {
   data() {
     return {
-      showAddTask: false
+      showAddTask: true
     }
   },
   computed: {
@@ -44,7 +44,7 @@ export default {
   },
   components: { //importacao com componente em components -> Task
     'task' : require('components/Tasks/Task.vue').default,
-    'addTask' : require('components/Modals/Addtask.vue').default
+    'addTask' : require('components/Tasks/Modals/Addtask.vue').default
   }
 }
 </script>
