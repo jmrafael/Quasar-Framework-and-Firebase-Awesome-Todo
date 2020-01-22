@@ -30,14 +30,30 @@
 
         <q-item-section side>
               <!--click.stop: click faz do botao clicavel e a propriedade stop paralizar o seu efeito de ser propagado. -->
-              <q-btn
+              <div class="row">
+                <q-btn
+                @click.stop="showEditTask  = true"  
+                flat
+                round
+                dense
+                color="primary"
+                icon="edit" />
+                
+                <q-btn
                 @click.stop="promptToDelete(id)"  
                 flat
                 round
                 dense
                 color="red"
-                icon="delete" />
+                icon="delete" />                
+              </div>
         </q-item-section>
+
+        <q-dialog v-model="showEditTask">
+          <edit-task @close="showEditTask = false"
+          :task="task"
+          :id="id"/> <!--Envio de task e ID da task como parametros do Botao Edit-->
+        </q-dialog> 
 
       </q-item>
 </template>
@@ -47,7 +63,12 @@
 import { mapActions } from 'vuex'
 
   export default {
-    props: ['task', 'id'],
+    props: ['task', 'id'], //Contem todos os campos da tarefa
+    data() {
+      return {
+        showEditTask: false
+      }
+    },
     methods: {
       ...mapActions('tasks', ['updateTask', 'deleteTask']), //A action ja foi mapeada e ja pode ser usada no componente
       promptToDelete(id) { 
@@ -61,6 +82,9 @@ import { mapActions } from 'vuex'
             this.deleteTask(id)
           })
       }
+    },
+    components: {
+      'edit-task': require('components/Tasks/Modals/EditTask.vue').default
     }
       
   }

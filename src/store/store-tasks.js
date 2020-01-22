@@ -4,24 +4,24 @@ import { uid } from 'quasar'
 const state  = {
     //Onde os dados serao armazenados
     tasks: {
-        // 'ID1': {Sssssssssssss
-        //     name: 'Ir as compras',Sdsdsds
-        //     completed: false,
-        //     dueDate: '2019/09/10',
-        //     dueTime: '10:34'
-        // },
-        // 'ID2': {
-        //     name: 'Passear com a familia',
-        //     completed: false,
-        //     dueDate: '2020/10/22',
-        //     dueTime: '13:55'
-        // },
-        // 'ID3': {
-        //     name: 'Orar ate orar',
-        //     completed: false,
-        //     dueDate: '2020/01/05',
-        //     dueTime: '21:05'
-        // }
+        'ID1': {
+            name: 'Ir as compras',
+            completed: false,
+            dueDate: '2019/09/10',
+            dueTime: '10:34'
+         },
+        'ID2': {
+             name: 'Passear com a familia',
+             completed: false,
+             dueDate: '2020/10/22',
+             dueTime: '13:55'
+         },
+         'ID3': {
+             name: 'Orar ate orar',
+             completed: false,
+             dueDate: '2020/01/05',
+             dueTime: '21:05'
+         }
     }
 }
 

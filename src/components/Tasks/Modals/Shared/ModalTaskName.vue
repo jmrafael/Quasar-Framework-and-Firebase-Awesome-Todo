@@ -14,7 +14,7 @@
                             <q-icon
                             v-if="name"                            
                             @click="$emit('update:name', '')"
-                            name="close"  
+                            name="close"   
                             class="cursor-pointer" />
                         </template>
 

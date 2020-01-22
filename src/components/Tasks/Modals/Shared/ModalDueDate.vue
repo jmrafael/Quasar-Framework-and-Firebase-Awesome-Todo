@@ -8,12 +8,15 @@
                             <q-icon
                             v-if="dueDate"
                             name="close" 
-                            @click="clearDueDate" 
+                            @click="$emit('clear')" 
                             class="cursor-pointer" />
 
                             <q-icon name="event" class="cursor-pointer">
                             <q-popup-proxy>
-                                <q-date :value="dueDate" />
+                                <q-date 
+                                :value="dueDate" 
+                                @input="$emit('update:dueDate', $event)"
+                                />
                             </q-popup-proxy>
                             </q-icon>                            
                         </template>

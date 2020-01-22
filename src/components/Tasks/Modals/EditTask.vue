@@ -1,7 +1,7 @@
 <template>
     <q-card>
         
-        <modal-header>Adicionar Tarefa</modal-header>
+        <modal-header>Editar Tarefa</modal-header>
         <form @submit.prevent="submitForm">
             <q-card-section>
                 
@@ -30,6 +30,7 @@
 import { mapActions } from 'vuex'
 
 export default {
+    props: ['task', 'id'], // Recebendo parametros enviado no botao Edit
     data() {
         return {
             taskToSubmit: {
@@ -41,7 +42,7 @@ export default {
         }
     },
     methods: {
-        ...mapActions('tasks', ['addTask']),
+        ...mapActions('tasks', ['updateTask']), //Mapeamento do metodo de update
         submitForm() {
             //console.log('submitForm');
             this.$refs.modalTaskName.$refs.name.validate()
@@ -51,7 +52,10 @@ export default {
             //console.log (this.$$refs.nome.validate());
         },
         submitTask() {
-            this.addTask(this.taskToSubmit);
+            this.updateTask({
+                id: this.id,
+                updates: this.taskToSubmit                
+            });
             //console.log('Registado')
             this.$emit('close')
         },
@@ -66,6 +70,9 @@ export default {
         'modal-due-date': require('components/Tasks/Modals/Shared/ModalDueDate.vue').default,
         'modal-due-time': require('components/Tasks/Modals/Shared/ModalDueTime.vue').default,
         'modal-buttons': require('components/Tasks/Modals/Shared/ModalButtons.vue').default
+    },
+    mounted() {
+        this.taskToSubmit = Object.assign({}, this.task) //Ao carregar os objecto, popular os campos
     }
 }
 </script>
