@@ -54,12 +54,20 @@ module.exports = function (ctx) {
         'QItemSection',
         'QItemLabel', 
         'QCheckbox',
-        'QIcon'
+        'QIcon',
+        'QDialog',
+        'QPageContainer',
+        'QLayout',
+        'QSpace',
+        'QInput',
+        'QDate',
+        'QPopupProxy',
+        'QTime'
       ],
-      directives: [],
+      directives: ['ClosePopup'],
 
       // Quasar plugins
-      plugins: []
+      plugins: ['Dialog']
     },
 
     // https://quasar.dev/quasar-cli/cli-documentation/supporting-ie
