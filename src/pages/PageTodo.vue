@@ -1,12 +1,15 @@
 <template>
-  <q-page class="q-pa-md">    
+  <q-page class="q-pa-md">
+    <tasks-todo
+      :tasksTodo="tasksTodo"/>   
+  <hr>
     <q-list
-      v-if="Object.keys(tasks).length"
+      v-if="Object.keys(tasksCompleted).length"
       separator
       bordered>
 
      <task
-        v-for="(task, key) in tasks"
+        v-for="(task, key) in tasksCompleted"
         :key="key"
         :task="task"
         :id="key"></task>
@@ -40,11 +43,11 @@ export default {
     }
   },
   computed: {
-    ...mapGetters('tasks', ['tasks'])
-  },
+    ...mapGetters('tasks', ['tasksTodo', 'tasksCompleted'])
+  },      
   components: { //importacao com componente em components -> Task
-    'task' : require('components/Tasks/Task.vue').default,
-    'addTask' : require('components/Tasks/Modals/Addtask.vue').default
+    'addTask' : require('components/Tasks/Modals/Addtask.vue').default,
+    'tasks-todo' : require('components/Tasks/TaskTodo.vue').default
   }
 }
 </script>

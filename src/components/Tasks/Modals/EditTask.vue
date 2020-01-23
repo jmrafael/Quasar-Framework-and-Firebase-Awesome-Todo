@@ -47,7 +47,7 @@ export default {
             //console.log('submitForm');
             this.$refs.modalTaskName.$refs.name.validate()
             if (!this.$refs.modalTaskName.$refs.name.hasError) {
-                this.submitTask()
+                this.submitTask()                
             }
             //console.log (this.$$refs.nome.validate());
         },

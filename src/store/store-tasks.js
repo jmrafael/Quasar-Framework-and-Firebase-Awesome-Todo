@@ -19,7 +19,7 @@ const state  = {
          'ID3': {
              name: 'Orar ate orar',
              completed: false,
-             dueDate: '2020/01/05',
+             dueDate: '2020/01/05',  
              dueTime: '21:05'
          }
     }
@@ -41,8 +41,11 @@ const mutations = {
     }
 }
 
+//Mutation chama-se na action
+
 const actions = {
     //Ira conter metodos qe poderao ser assicronos, que buscam dados no servidor directamente
+    
     updateTask({ commit }, payload) {
         //payload server para buscar o ID
         //commit server para invocar uma mutation
@@ -64,8 +67,27 @@ const actions = {
 
 const getters = {
     //Objecto para buscar dados do estados, para ser usados, e manipular os dados no estado para 
-    tasks: (state) => {
-        return state.tasks
+    tasksTodo: (state) => {
+        let tasks = {}
+        Object.keys(state.tasks).forEach(function(key) {
+            let task = state.tasks[key]
+            console.log('task: ', task);
+            if( !task.completed) {
+                tasks[key] = task
+            }
+        })
+        return tasks
+    },
+    tasksCompleted: (state) => {
+        let tasks = {}
+        Object.keys(state.tasks).forEach(function(key) {
+            let task = state.tasks[key]
+            console.log('task: ', task);
+            if( task.completed) {
+                tasks[key] = task
+            }
+        })
+        return tasks
     }
 }
 
