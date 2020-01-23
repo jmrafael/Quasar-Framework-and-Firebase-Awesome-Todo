@@ -22,7 +22,8 @@ const state  = {
              dueDate: '2020/01/05',  
              dueTime: '21:05'
          }
-    }
+    },
+    showAddTaskModal: false
 }
 
 const mutations = {
@@ -68,11 +69,11 @@ const actions = {
 const getters = {
     //Objecto para buscar dados do estados, para ser usados, e manipular os dados no estado para 
     tasksTodo: (state) => {
-        let tasks = {}
+        let tasks = {} //Objecto que sera populado  pelas tarefas
         Object.keys(state.tasks).forEach(function(key) {
             let task = state.tasks[key]
-            console.log('task: ', task);
-            if( !task.completed) {
+            //console.log('task: ', task);
+            if(!task.completed) {
                 tasks[key] = task
             }
         })
@@ -82,7 +83,6 @@ const getters = {
         let tasks = {}
         Object.keys(state.tasks).forEach(function(key) {
             let task = state.tasks[key]
-            console.log('task: ', task);
             if( task.completed) {
                 tasks[key] = task
             }

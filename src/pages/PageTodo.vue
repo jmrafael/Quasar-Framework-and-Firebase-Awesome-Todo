@@ -1,20 +1,19 @@
 <template>
   <q-page class="q-pa-md">
+
+    <No-tasks
+      v-if="!Object.keys(tasksTodo).length">
+    </No-tasks>
+
     <tasks-todo
-      :tasksTodo="tasksTodo"/>   
-  <hr>
-    <q-list
+      v-else
+      :tasksTodo="tasksTodo"/>
+      
+<hr>
+
+    <tasks-completed
       v-if="Object.keys(tasksCompleted).length"
-      separator
-      bordered>
-
-     <task
-        v-for="(task, key) in tasksCompleted"
-        :key="key"
-        :task="task"
-        :id="key"></task>
-
-  </q-list>
+      :tasksCompleted="tasksCompleted"/>
 
 <div class="absolute-bottom text-center q-mb-lg">
     <q-btn
@@ -44,10 +43,17 @@ export default {
   },
   computed: {
     ...mapGetters('tasks', ['tasksTodo', 'tasksCompleted'])
-  },      
+  },
+  mounted(){
+    this.$root.$on('showAddTask', () =>  {
+      this.showAddTask = true
+    })
+  },     
   components: { //importacao com componente em components -> Task
     'addTask' : require('components/Tasks/Modals/Addtask.vue').default,
-    'tasks-todo' : require('components/Tasks/TaskTodo.vue').default
+    'tasks-todo' : require('components/Tasks/TasksTodo.vue').default,
+    'tasks-completed' : require('components/Tasks/TasksCompleted.vue').default,
+    'No-tasks' : require('components/Tasks/NoTasks.vue').default
   }
 }
 </script>

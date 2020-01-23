@@ -62,7 +62,8 @@ module.exports = function (ctx) {
         'QInput',
         'QDate',
         'QPopupProxy',
-        'QTime'
+        'QTime',
+        'QBanner'
       ],
       directives: ['ClosePopup'],
 
